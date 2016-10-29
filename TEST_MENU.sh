@@ -15,8 +15,6 @@ export -f pause
 # create an array of all *.sh files in the directory
 # --------------------------------------------------
 declare -a EXEC_FILE_LIST
-# citation:
-# https://stackoverflow.com/questions/10981439/reading-filenames-into-an-array
 shopt -s nullglob
 EXEC_FILE_LIST=(*.sh)
 
@@ -79,5 +77,21 @@ while true; do
     echo "files run (or excluded)";
     echo ${FILES_RUN[*]}
 done
+
+# citations
+# =========
+#
+# arrays in general:
+# http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_10_02.html
+#
+# check if an array contains a value
+# https://stackoverflow.com/questions/3685970/check-if-an-array-contains-a-value
+#
+# load an array with filenames
+# https://stackoverflow.com/questions/10981439/reading-filenames-into-an-array
+#
+# Looping over arrays, printing both index and value
+# https://stackoverflow.com/questions/6723426/looping-over-arrays-printing-both-index-and-value
+
 
 

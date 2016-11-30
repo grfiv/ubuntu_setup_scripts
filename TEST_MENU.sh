@@ -3,6 +3,26 @@
 # present the installation-file menu
 # ==================================
 
+clear
+
+# ---------------------------------------------------
+function open_url {
+    # open a URL in a browser
+    #
+    # usage: open_url http://www.google.com
+    URL=$1
+    if which xdg-open > /dev/null
+    then
+      xdg-open $URL > /dev/null
+    elif which gnome-open > /dev/null
+    then
+      gnome-open $URL > /dev/null
+    fi
+}
+export -f open_url
+# ---------------------------------------------------
+
+# ---------------------------------------------------
 function pause() {
     # wait for input
     #
@@ -11,6 +31,36 @@ function pause() {
    read -p "$*"
 }
 export -f pause
+# ---------------------------------------------------
+
+# ---------------------------------------------------
+function install_deb {
+     # display instructions to install a deb file
+     #
+     # usage: install_deb
+    echo ""
+    echo "download the deb file from the website just opened"
+    echo "cd ~/Downloads"
+    echo "dpkg -i ..."
+    echo ""
+    pause
+}
+export -f install_deb
+# ---------------------------------------------------
+
+echo $'\n update'
+echo "#################################################################"
+sudo apt-get update
+pause
+
+echo $'\n upgrade'
+echo "#################################################################"
+sudo apt-get -y upgrade
+
+echo ""
+echo "press Enter to continue"
+pause
+clear
 
 # create an array of all *.sh files in the directory
 # --------------------------------------------------
@@ -22,6 +72,9 @@ EXEC_FILE_LIST=(*.sh)
 # ---------------------------------------------------------
 declare -a FILES_RUN
 FILES_RUN[${#FILES_RUN[@]}]="TEST_MENU.sh";
+FILES_RUN[${#FILES_RUN[@]}]="install_menu.sh";
+FILES_RUN[${#FILES_RUN[@]}]="upgrade_python_modules.sh";
+
 
 # the main body of the script
 # ---------------------------

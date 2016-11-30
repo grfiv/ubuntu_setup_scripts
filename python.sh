@@ -36,12 +36,7 @@ sudo apt-get install libboost-python-dev cmake
 sudo -H pip install -U scikit-image
 
 
-echo $'\n jupyter'
-echo "#################################################################"
-pause
-#ipython-qtconsole
-sudo -H pip install --upgrade ipython[all]
-sudo -H pip install jupyter
+
 
 
 
